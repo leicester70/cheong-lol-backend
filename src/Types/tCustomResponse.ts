@@ -3,4 +3,4 @@ export type tCustomResponse = {
     data?: any;
     toastThis?: string;
     error?: any;
-}
+};

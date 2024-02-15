@@ -6,7 +6,7 @@ export type tPetStats = {
     thirstPoints?: NumberRange<0, 100>;
     cleanlinessPoints?: NumberRange<0, 100>;
     happinessPoints?: NumberRange<0, 100>;
-}
+};
 
 export abstract class Pet {
     ownerUuid: string; // fk relation to supabase auth.user.id

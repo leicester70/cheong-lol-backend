@@ -1,9 +1,9 @@
 // src/index.js
 import dotenv from 'dotenv';
 import express, { Express } from 'express';
-import { PetsRoute } from './Routes/PetsRoute';
+import { PetsController } from './Controller/PetsController';
 const rfs = require('rotating-file-stream');
-import morgan from "morgan";
+import morgan from 'morgan';
 
 dotenv.config();
 
@@ -26,7 +26,7 @@ app.use(
     )
 );
 // supply routes
-app.use('/pets', PetsRoute);
+app.use('/pets', PetsController);
 
 app.listen(port, () => {
     console.log(`[server]: Server is running at http://localhost:${port}`);

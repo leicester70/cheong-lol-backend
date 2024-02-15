@@ -1,11 +1,11 @@
 import { createClient, PostgrestError } from "@supabase/supabase-js";
-import { CatBreeds } from "../Models/Cat";
 import { PetImplements } from "../Interfaces/PetImplements"
+import { AvailableCatBreeds } from "../Models/Cat";
 
 export default class CatService implements PetImplements {
     constructor() { }
 
-    async createNewPet(owner_uuid: string, name: string, gender: 'M' | 'F', catBreed: any): Promise<void> {
+    async createNewPet(owner_uuid: string, name: string, gender: 'M' | 'F', breed: AvailableCatBreeds): Promise<void> {
         try {
             let initialPetStats = {
                 cleanlinessPoints: 100,
@@ -14,21 +14,27 @@ export default class CatService implements PetImplements {
                 hungerPoints: 100,
                 thirstPoints: 100
             };
-            if (!Object.values(CatBreeds).includes(catBreed)) {
-                throw `Invalid Cat Breed - ${Object.values(CatBreeds)} does not include: ${catBreed}`;
-            }
             const supabase = createClient(
                 `${process.env.PUBLIC_SUPABASE_URL}`,
                 `${process.env.PUBLIC_SUPABASE_ANON_KEY}`
             );
-            const { data, error } = await supabase
+            // TODO: unreachable code, fix this shit
+            // public.PETS
+            const { data: PETS_data, error: PETS_error } = await supabase
                 .from('PETS')
-                .insert([{ owner_uuid: owner_uuid, name: name, gender: gender, stats: initialPetStats }])
-                .select();
-            if (error) throw error as PostgrestError;
-            console.log(data);
+                .insert([{ OWNER_UUID: owner_uuid, NAME: name, GENDER: gender, STATS: initialPetStats }])
+            const newPetUUID = PETS_data!["PET_UUID"]
+            console.log(PETS_data);
+
+            if (PETS_error) throw PETS_error as PostgrestError;
+            // public.CATS
+            const { error: CATS_error } = await supabase
+                .from('CATS')
+                .insert([{ PET_UUID: newPetUUID, BREED: breed }])
+            if (CATS_error) throw CATS_error as PostgrestError;
+            console.log(CATS_error);
         } catch (error) {
-            console.log(error);
+            throw error
         }
     }
 }

@@ -1,6 +1,6 @@
 import { Pet } from './Pet';
 
-export enum CatBreeds {
+export enum AvailableCatBreeds {
     Ragdoll = 'Ragdoll',
     ScottishFold = 'Scottish Fold',
     MaineCoon = 'Maine Coon',
@@ -12,12 +12,12 @@ export enum CatBreeds {
 }
 
 export class Cat extends Pet {
-    private _breed: CatBreeds | undefined;
+    private _breed: AvailableCatBreeds | undefined;
 
-    public get breed(): CatBreeds | undefined {
+    public get breed(): AvailableCatBreeds | undefined {
         return this._breed;
     }
-    public set breed(value: CatBreeds | undefined) {
+    public set breed(value: AvailableCatBreeds | undefined) {
         this._breed = value;
     }
 }
