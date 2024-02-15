@@ -1,7 +1,7 @@
 // src/index.js
 import dotenv from 'dotenv';
 import express, { Express } from 'express';
-import { PetsRoute } from './Routes/Pets/PetsRoute';
+import { PetsRoute } from './Routes/PetsRoute';
 const rfs = require('rotating-file-stream');
 import morgan = require('morgan');
 

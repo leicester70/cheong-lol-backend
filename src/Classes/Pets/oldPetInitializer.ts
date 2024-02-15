@@ -1,4 +1,4 @@
-import { NumberRange } from '../../Types/NumberRange';
+import { NumberRange } from '../../Types/tNumberRange';
 
 export abstract class PetController {
     // what the db will have
@@ -16,7 +16,7 @@ export abstract class PetController {
     };
     // end of what the db will have
 
-    constructor() { }
+    constructor() {}
 
     // functions
     // consumeFood(): void {
@@ -25,6 +25,8 @@ export abstract class PetController {
     // }
 
     logAction(actionMessage: string): void {
-        console.log(`Pets Log: [${Date.now.toString()}] ${this.name} ${this.uuid} -> ${actionMessage} `);
+        console.log(
+            `Pets Log: [${Date.now.toString()}] ${this.name} ${this.uuid} -> ${actionMessage} `
+        );
     }
 }

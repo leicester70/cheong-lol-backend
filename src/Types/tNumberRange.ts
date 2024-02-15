@@ -5,4 +5,9 @@ export type NumberRange<
     ACC extends number = never
 > = ARR['length'] extends END
     ? ACC | START | END
-    : NumberRange<START, END, [...ARR, 1], ARR[START] extends undefined ? ACC : ACC | ARR['length']>;
+    : NumberRange<
+          START,
+          END,
+          [...ARR, 1],
+          ARR[START] extends undefined ? ACC : ACC | ARR['length']
+      >;

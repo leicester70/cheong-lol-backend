@@ -1,4 +1,4 @@
-export interface CustomResponse {
+export type tCustomResponse = {
     succeed: boolean;
     data?: any;
     toastThis?: string;

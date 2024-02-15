@@ -1,4 +1,3 @@
-import { NumberRange } from '../Types/NumberRange';
 import { Pet } from './Pet';
 
 export enum CatBreeds {
@@ -8,10 +7,17 @@ export enum CatBreeds {
     SelkirkRex = 'Selkirk Rex',
     AmericanBobtail = 'American Bobtail',
     Birman = 'Birman',
-    Siamese = 'Siamese'
+    Siamese = 'Siamese',
+    RussianBlue = 'Russian Blue'
 }
 
 export class Cat extends Pet {
-    private breed: Enumerator;
+    private _breed: CatBreeds | undefined;
 
+    public get breed(): CatBreeds | undefined {
+        return this._breed;
+    }
+    public set breed(value: CatBreeds | undefined) {
+        this._breed = value;
+    }
 }

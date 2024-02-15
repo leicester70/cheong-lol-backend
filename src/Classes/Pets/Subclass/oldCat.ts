@@ -18,7 +18,12 @@ export class CatController extends PetController {
         this.logAction('meowed');
     }
 
-    async createNewCat(owner_uuid: string, name: string, gender: 'M' | 'F', catBreed: any): Promise<void> {
+    async createNewCat(
+        owner_uuid: string,
+        name: string,
+        gender: 'M' | 'F',
+        catBreed: any
+    ): Promise<void> {
         try {
             this.name = name;
             this.gender = gender;
@@ -42,7 +47,14 @@ export class CatController extends PetController {
             );
             const { data, error } = await supabase
                 .from('PETS')
-                .insert([{ owner_uuid: owner_uuid, name: this.name, gender: this.gender, stats: this.stats }])
+                .insert([
+                    {
+                        owner_uuid: owner_uuid,
+                        name: this.name,
+                        gender: this.gender,
+                        stats: this.stats
+                    }
+                ])
                 .select();
             if (error) throw error as PostgrestError;
             console.log(data);
