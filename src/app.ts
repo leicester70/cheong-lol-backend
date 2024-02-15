@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import express, { Express } from 'express';
 import { PetsRoute } from './Routes/PetsRoute';
 const rfs = require('rotating-file-stream');
-import morgan = require('morgan');
+import morgan from "morgan";
 
 dotenv.config();
 
