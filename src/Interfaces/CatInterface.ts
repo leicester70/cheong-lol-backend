@@ -1,5 +1,5 @@
-export interface PetImplements {
-    createNewPet(
+export interface CatInterface {
+    createNewCat(
         owner_uuid: string,
         name: string,
         gender: 'M' | 'F',
