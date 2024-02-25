@@ -54,7 +54,7 @@ PetsController.post('/new-cat', async (req: Request, res: Response) => {
         }
         try {
             let catService = new CatService();
-            await catService.createNewPet(
+            await catService.createNewCat(
                 req.body.owner_uuid,
                 req.body.name,
                 req.body.gender,
